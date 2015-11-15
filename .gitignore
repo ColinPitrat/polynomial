@@ -1,0 +1,3 @@
+src/finite_fields/test_finite_fields
+src/polynomial/test_g2polynomial
+src/polynomial/test_polynomial

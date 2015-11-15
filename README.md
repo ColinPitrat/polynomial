@@ -1,4 +1,4 @@
-= Polynomial library =
+# Polynomial library
 
 A quick & dirty C++ library to handle polynoms.
 This is not intended for serious usage, this is just an example / exercise.

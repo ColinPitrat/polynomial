@@ -1,6 +1,6 @@
 all:
 	g++ -O2 -Wall -Werror -std=c++11 test_polynomial.cc -o test_polynomial
-	g++ -O2 -Wall -Werror -std=c++11 test_g2polynomial.cc -o test_g2polynomial
+	g++ -O2 -Wall -Werror -std=c++11 test_g2polynomial.cc -o test_g2polynomial -gmp
 	./test_polynomial --log_level=test_suite
 	./test_g2polynomial --log_level=test_suite
 

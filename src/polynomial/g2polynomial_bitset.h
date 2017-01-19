@@ -120,8 +120,8 @@ std::pair<G2Poly, G2Poly> euclidDivide(const G2Poly &a, const G2Poly &b) {
     r -= bn;
     q += G2Poly::Xn(n);
   }
-  r.simplify(std::max(b.degree(), 0ll));
-  q.simplify(std::max(a.degree() - b.degree(), 0ll));
+  r.simplify(std::max(b.degree(), static_cast<int64_t>(0)));
+  q.simplify(std::max(a.degree() - b.degree(), static_cast<int64_t>(0)));
   //std::cerr << "(" << q << ", " << r << ")" << std::endl;
   return std::make_pair(q, r);
 }
@@ -202,7 +202,7 @@ G2Poly& G2Poly::operator*=(const G2Poly &other) {
       result ^= (other.coeffs_ << i);
     }
   }
-  auto max_size = std::max(degree_, 0ll) + std::max(other.degree_, 0ll);
+  auto max_size = std::max(degree_, static_cast<int64_t>(0)) + std::max(other.degree_, static_cast<int64_t>(0));
   coeffs_ = result;
   simplify(max_size);
   return *this;
@@ -216,7 +216,7 @@ G2Poly G2Poly::derivate() const {
   G2Poly p(*this);
   p.coeffs_ >>= 1;
   p.coeffs_ &= derivationMask;
-  p.simplify(std::max(degree_, 0ll));
+  p.simplify(std::max(degree_, static_cast<int64_t>(0)));
   return p;
 }
 
@@ -235,7 +235,7 @@ G2Poly gcd(G2Poly a, G2Poly b) {
     r = a % b;
   }
   //std::cerr << "gcd = " << b << std::endl;
-  b.simplify(std::max(a.degree(), 0ll));
+  b.simplify(std::max(a.degree(), static_cast<int64_t>(0)));
   return b;
 }
 

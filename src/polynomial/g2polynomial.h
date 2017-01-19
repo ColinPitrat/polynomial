@@ -116,13 +116,17 @@ void G2Poly::minusTimesXn(const G2Poly &b, uint64_t n) {
   while(i != size && j != size2) {
     if(ci > cj) {
       result.push_back(ci);
-      ci = coeffs_[++i];
+      if(++i == size) break;
+      ci = coeffs_[i];
     } else if(ci < cj) {
       result.push_back(cj);
-      cj = b.coeffs_[++j] + n;
+      if(++j == size2) break;
+      cj = b.coeffs_[j] + n;
     } else {
-      ci = coeffs_[++i];
-      cj = b.coeffs_[++j] + n;
+      if(++i == size) break;
+      if(++j == size2) break;
+      ci = coeffs_[i];
+      cj = b.coeffs_[j] + n;
     }
   }
   // Insert remaining coeffs from other as they are obviously not in this
